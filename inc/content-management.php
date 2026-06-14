@@ -307,3 +307,50 @@ function paijo_flush_content_management_rewrite_rules(): void {
 	paijo_register_content_management_cpt();
 	flush_rewrite_rules();
 }
+
+/**
+ * Add custom rewrite rules for custom taxonomy terms under the 'konten-khusus' slug base.
+ * This resolves the conflict with the custom post type sharing the same base slug.
+ */
+add_action( 'init', 'paijo_konten_khusus_rewrites' );
+function paijo_konten_khusus_rewrites(): void {
+	$terms = get_terms(
+		array(
+			'taxonomy'   => 'paijo_content_category',
+			'hide_empty' => false,
+		)
+	);
+
+	if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
+		$slugs = array();
+		foreach ( $terms as $term ) {
+			$slugs[] = preg_quote( $term->slug, '#' );
+		}
+		$slug_pattern = implode( '|', $slugs );
+
+		// Category archive rule (e.g. /konten-khusus/derby-istimewa/)
+		add_rewrite_rule(
+			'^konten-khusus/(' . $slug_pattern . ')/?$',
+			'index.php?paijo_content_category=$matches[1]',
+			'top'
+		);
+
+		// Category archive pagination rule (e.g. /konten-khusus/derby-istimewa/page/2/)
+		add_rewrite_rule(
+			'^konten-khusus/(' . $slug_pattern . ')/page/([0-9]+)/?$',
+			'index.php?paijo_content_category=$matches[1]&paged=$matches[2]',
+			'top'
+		);
+	}
+}
+
+/**
+ * Flush rewrite rules dynamically when terms under custom taxonomy are created, updated, or deleted.
+ */
+add_action( 'create_paijo_content_category', 'paijo_flush_rewrites_on_term_change' );
+add_action( 'edited_paijo_content_category', 'paijo_flush_rewrites_on_term_change' );
+add_action( 'delete_paijo_content_category', 'paijo_flush_rewrites_on_term_change' );
+function paijo_flush_rewrites_on_term_change(): void {
+	paijo_konten_khusus_rewrites();
+	flush_rewrite_rules();
+}
