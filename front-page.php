@@ -99,7 +99,7 @@ $hero_ids   = paijo_post_ids_from_query( $hero_query );
 				<h2 class="text-3xl sm:text-5xl font-sans font-black tracking-tight mb-3"><?php esc_html_e( 'Baca Artikel Khas', 'paijo' ); ?></h2>
 				<p class="text-sm sm:text-base text-neutral-400 max-w-2xl mx-auto mb-12"><?php esc_html_e( 'Beragam cerita, menggerakkan ekosistem', 'paijo' ); ?></p>
 				
-				<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+				<div class="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-8 sm:gap-8">
 					<?php
 					foreach ( $featured_content_categories as $category ) :
 						$latest_post = paijo_get_latest_content_for_category( (int) $category->term_id );
@@ -125,8 +125,8 @@ $hero_ids   = paijo_post_ids_from_query( $hero_query );
 							<span class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></span>
 							
 							<!-- Category Title -->
-							<span class="absolute inset-x-0 bottom-0 z-10 block p-5 sm:p-6 text-left">
-								<span class="block text-xl sm:text-2xl font-sans font-black leading-tight tracking-tight text-white transition-colors group-hover:text-white/85">
+							<span class="absolute inset-x-0 bottom-0 z-10 block p-3 sm:p-6 text-left">
+								<span class="block text-base sm:text-2xl font-sans font-black leading-tight tracking-tight text-white transition-colors group-hover:text-white/85">
 									<?php echo esc_html( $category_label ); ?>
 								</span>
 							</span>
@@ -172,12 +172,12 @@ $hero_ids   = paijo_post_ids_from_query( $hero_query );
 						</div>
 					</a>
 
-					<div class="grid grid-cols-1 gap-x-5 gap-y-8 sm:grid-cols-2 xl:grid-cols-3">
-						<?php foreach ( $showcase_grid_posts as $showcase_post ) : ?>
+						<div class="flex gap-5 overflow-x-auto pb-2 snap-x snap-mandatory lg:grid lg:grid-cols-2 xl:grid-cols-3 lg:overflow-visible lg:pb-0">
+							<?php foreach ( $showcase_grid_posts as $showcase_post ) : ?>
 							<?php
 							$card_image = paijo_get_thumbnail_url( (int) $showcase_post->ID, 'paijo-square' );
 							?>
-							<article class="group min-w-0">
+								<article class="group min-w-[38%] snap-start sm:min-w-[30%] lg:min-w-0">
 								<a class="block overflow-hidden bg-neutral-200 aspect-square" href="<?php echo esc_url( get_permalink( $showcase_post ) ); ?>">
 									<?php if ( $card_image ) : ?>
 										<img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" src="<?php echo esc_url( $card_image ); ?>" alt="<?php echo esc_attr( get_the_title( $showcase_post ) ); ?>">
@@ -256,7 +256,7 @@ $hero_ids   = paijo_post_ids_from_query( $hero_query );
 						<?php
 						$card_image = paijo_get_thumbnail_url( (int) $insight_post->ID, 'paijo-square' );
 						?>
-						<a class="group relative aspect-square w-full overflow-hidden bg-paijo-ink text-white flex flex-col justify-end p-6 sm:p-8" href="<?php echo esc_url( get_permalink( $insight_post ) ); ?>">
+							<a class="group relative aspect-square w-full overflow-hidden bg-paijo-ink text-white hidden flex-col justify-end p-6 sm:flex sm:p-8" href="<?php echo esc_url( get_permalink( $insight_post ) ); ?>">
 							<?php if ( $card_image ) : ?>
 								<img class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" src="<?php echo esc_url( $card_image ); ?>" alt="<?php echo esc_attr( get_the_title( $insight_post ) ); ?>">
 							<?php else : ?>
@@ -340,7 +340,7 @@ $hero_ids   = paijo_post_ids_from_query( $hero_query );
 						<?php
 						$card_image = paijo_get_thumbnail_url( (int) $tinggal_post->ID, 'paijo-square' );
 						?>
-						<a class="group relative aspect-square w-full overflow-hidden bg-paijo-ink text-white flex flex-col justify-end p-6 sm:p-8" href="<?php echo esc_url( get_permalink( $tinggal_post ) ); ?>">
+							<a class="group relative aspect-square w-full overflow-hidden bg-paijo-ink text-white hidden flex-col justify-end p-6 sm:flex sm:p-8" href="<?php echo esc_url( get_permalink( $tinggal_post ) ); ?>">
 							<?php if ( $card_image ) : ?>
 								<img class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" src="<?php echo esc_url( $card_image ); ?>" alt="<?php echo esc_attr( get_the_title( $tinggal_post ) ); ?>">
 							<?php else : ?>
