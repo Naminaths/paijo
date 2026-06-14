@@ -21,6 +21,7 @@ $paijo_includes = array(
 	'inc/assets.php',
 	'inc/metaboxes.php',
 	'inc/content-management.php',
+	'inc/demo-importer.php',
 );
 
 foreach ( $paijo_includes as $paijo_include ) {
