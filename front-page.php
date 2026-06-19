@@ -91,7 +91,7 @@ $hero_ids   = paijo_post_ids_from_query( $hero_query );
 	$featured_content_categories = paijo_get_featured_content_category_terms();
 	if ( ! empty( $featured_content_categories ) ) :
 	?>
-		<section class="relative paijo-section bg-[#1b1b1b] text-white border-b border-neutral-800 bg-cover bg-center bg-no-repeat" style="background-image: url('<?php echo esc_url( PAIJO_URI . '/assets/images/section-2.jpg?ver=' . paijo_asset_version( 'assets/images/section-2.jpg' ) ); ?>');">
+		<section class="relative paijo-section bg-[#1b1b1b] text-white border-b border-neutral-800 bg-cover bg-center bg-no-repeat" style="background-image: url('<?php echo esc_url( PAIJO_URI . '/assets/images/watercolor.png?ver=' . paijo_asset_version( 'assets/images/watercolor.png' ) ); ?>');">
 			<!-- Dark Overlay for subtle background shadow effect -->
 			<div class="absolute inset-0 bg-black/85 z-0 pointer-events-none"></div>
 			
