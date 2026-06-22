@@ -87,6 +87,41 @@ function paijo_customize_register( WP_Customize_Manager $wp_customize ): void {
 			'label'   => __( 'Footer text', 'paijo' ),
 		)
 	);
+
+	// Social Media URLs
+	$wp_customize->add_section(
+		'paijo_social',
+		array(
+			'title'    => __( 'Paijo Social Media', 'paijo' ),
+			'priority' => 175,
+		)
+	);
+
+	$social_networks = array(
+		'facebook'  => __( 'Facebook URL', 'paijo' ),
+		'twitter'   => __( 'Twitter URL', 'paijo' ),
+		'instagram' => __( 'Instagram URL', 'paijo' ),
+		'tiktok'    => __( 'TikTok URL', 'paijo' ),
+	);
+
+	foreach ( $social_networks as $network => $label ) {
+		$wp_customize->add_setting(
+			"paijo_social_{$network}",
+			array(
+				'default'           => '',
+				'sanitize_callback' => 'esc_url_raw',
+			)
+		);
+
+		$wp_customize->add_control(
+			"paijo_social_{$network}",
+			array(
+				'type'    => 'url',
+				'section' => 'paijo_social',
+				'label'   => $label,
+			)
+		);
+	}
 }
 
 function paijo_sanitize_checkbox( mixed $checked ): bool {
