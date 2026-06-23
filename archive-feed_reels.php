@@ -37,7 +37,7 @@ $feed_reels_query = new WP_Query( $args );
 					Rubrik Video
 				</span>
 				<h1 class="text-3xl sm:text-4xl lg:text-5xl font-sans font-extrabold text-paijo-ink leading-tight"><?php esc_html_e( 'Feed Reels', 'paijo' ); ?></h1>
-				<div class="mt-4 text-paijo-muted text-sm sm:text-base leading-relaxed"><?php esc_html_e( 'Cerita di balik kuliner legendaris, toko unik, dan bisnis kreatif di Jogja.', 'paijo' ); ?></div>
+				<div class="mt-4 text-paijo-muted text-sm sm:text-base leading-relaxed"><?php esc_html_e( 'Rangkuman visual peristiwa penting di Yogyakarta saat ini.', 'paijo' ); ?></div>
 			</div>
 		</div>
 

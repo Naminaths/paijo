@@ -398,7 +398,7 @@ $hero_ids   = paijo_post_ids_from_query( $hero_query );
 						Rubrik Video
 					</span>
 					<h2 class="text-3xl sm:text-5xl font-sans font-black tracking-tight text-paijo-ink"><?php esc_html_e( 'Feed Reels', 'paijo' ); ?></h2>
-					<p class="mt-3 text-sm sm:text-base text-paijo-muted max-w-2xl mx-auto"><?php esc_html_e( 'Cerita di balik kuliner legendaris, toko unik, dan bisnis kreatif di Jogja.', 'paijo' ); ?></p>
+					<p class="mt-3 text-sm sm:text-base text-paijo-muted max-w-2xl mx-auto"><?php esc_html_e( 'Rangkuman visual peristiwa penting di Yogyakarta saat ini.', 'paijo' ); ?></p>
 				</div>
 
 				<!-- Horizontal Scroll Slider Wrapper -->
@@ -454,7 +454,7 @@ $hero_ids   = paijo_post_ids_from_query( $hero_query );
 								<div class="relative z-10 mt-4">
 									<span class="text-[9px] font-black uppercase tracking-widest text-[#f1818f]">Lihat Semua</span>
 									<h3 class="font-sans font-black text-2xl text-white mt-4 leading-tight group-hover:text-[#f1818f] transition-colors"><?php esc_html_e( 'Tonton Video Lainnya', 'paijo' ); ?></h3>
-									<p class="text-xs text-neutral-400 mt-3 leading-relaxed"><?php esc_html_e( 'Jelajahi kisah kuliner legendaris dan bisnis kreatif Jogja selengkapnya di rubrik Feed Reels.', 'paijo' ); ?></p>
+									<p class="text-xs text-neutral-400 mt-3 leading-relaxed"><?php esc_html_e( 'Rangkuman visual peristiwa penting di Yogyakarta saat ini selengkapnya di rubrik Feed Reels.', 'paijo' ); ?></p>
 								</div>
 
 								<div class="relative z-10 mb-4 self-start">
