@@ -1,6 +1,6 @@
 <?php
 /**
- * Single Toko Bercerita CPT template.
+ * Single Feed Reels CPT template.
  *
  * @package Paijo
  */
@@ -14,12 +14,12 @@ get_header();
 		while ( have_posts() ) :
 			the_post();
 			$post_id     = get_the_ID();
-			$embed_url   = get_post_meta( $post_id, '_paijo_toko_embed_url', true );
-			$views_count = paijo_update_toko_metric( $post_id, 'views' );
-			$loves_count = paijo_get_toko_metric( $post_id, 'loves' );
-			$shares_count = paijo_get_toko_metric( $post_id, 'shares' );
-			$metric_nonce = wp_create_nonce( 'paijo_toko_metric' );
-			$archive_url  = get_post_type_archive_link( 'toko_bercerita' ) ?: home_url( '/pj-feed/' );
+			$embed_url   = get_post_meta( $post_id, '_paijo_feed_reels_embed_url', true );
+			$views_count = paijo_update_feed_reels_metric( $post_id, 'views' );
+			$loves_count = paijo_get_feed_reels_metric( $post_id, 'loves' );
+			$shares_count = paijo_get_feed_reels_metric( $post_id, 'shares' );
+			$metric_nonce = wp_create_nonce( 'paijo_feed_reels_metric' );
+			$archive_url  = get_post_type_archive_link( 'feed_reels' ) ?: home_url( '/pj-feed/' );
 			
 			// Use the custom logo asset requested by the user
 			$logo_url = esc_url( PAIJO_URI . '/assets/images/instagram-logo.jpg' );
@@ -125,23 +125,23 @@ get_header();
 						<!-- Horizontal Separator -->
 						<div class="border-t border-neutral-100 dark:border-neutral-800/60 my-2"></div>
 
-						<div class="flex items-center gap-6 border-t border-neutral-100 dark:border-neutral-800/60 pt-1 font-sans text-neutral-950 dark:text-white" data-toko-actions data-post-id="<?php echo esc_attr( $post_id ); ?>" data-ajax-url="<?php echo esc_url( admin_url( 'admin-ajax.php' ) ); ?>" data-nonce="<?php echo esc_attr( $metric_nonce ); ?>" data-title="<?php echo esc_attr( get_the_title() ); ?>" data-url="<?php echo esc_url( get_permalink() ); ?>">
-							<div class="flex items-center gap-2 text-sm font-bold text-neutral-500 dark:text-neutral-400" aria-label="<?php echo esc_attr( sprintf( __( '%s views', 'paijo' ), paijo_format_toko_metric( $views_count ) ) ); ?>">
+						<div class="flex items-center gap-6 border-t border-neutral-100 dark:border-neutral-800/60 pt-1 font-sans text-neutral-950 dark:text-white" data-feed-reels-actions data-post-id="<?php echo esc_attr( $post_id ); ?>" data-ajax-url="<?php echo esc_url( admin_url( 'admin-ajax.php' ) ); ?>" data-nonce="<?php echo esc_attr( $metric_nonce ); ?>" data-title="<?php echo esc_attr( get_the_title() ); ?>" data-url="<?php echo esc_url( get_permalink() ); ?>">
+							<div class="flex items-center gap-2 text-sm font-bold text-neutral-500 dark:text-neutral-400" aria-label="<?php echo esc_attr( sprintf( __( '%s views', 'paijo' ), paijo_format_feed_reels_metric( $views_count ) ) ); ?>">
 								<svg class="h-7 w-7 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="1.9">
 									<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z" />
 									<circle cx="12" cy="12" r="3" />
 								</svg>
-								<span data-toko-count="views"><?php echo esc_html( paijo_format_toko_metric( $views_count ) ); ?></span>
+								<span data-feed-reels-count="views"><?php echo esc_html( paijo_format_feed_reels_metric( $views_count ) ); ?></span>
 							</div>
 
-							<button type="button" class="group flex items-center gap-2 text-sm font-bold transition-colors hover:text-[#f1818f] focus:outline-none cursor-pointer" data-toko-action="love" aria-pressed="false" aria-label="<?php esc_attr_e( 'Love this post', 'paijo' ); ?>">
+							<button type="button" class="group flex items-center gap-2 text-sm font-bold transition-colors hover:text-[#f1818f] focus:outline-none cursor-pointer" data-feed-reels-action="love" aria-pressed="false" aria-label="<?php esc_attr_e( 'Love this post', 'paijo' ); ?>">
 								<svg class="h-8 w-8 fill-none stroke-current transition-colors" viewBox="0 0 24 24" stroke-width="1.9">
 									<path d="M20.8 4.6a5.4 5.4 0 0 0-7.6 0L12 5.8l-1.2-1.2a5.4 5.4 0 0 0-7.6 7.6l1.2 1.2L12 21l7.6-7.6 1.2-1.2a5.4 5.4 0 0 0 0-7.6z" />
 								</svg>
-								<span data-toko-count="loves"><?php echo esc_html( paijo_format_toko_metric( $loves_count ) ); ?></span>
+								<span data-feed-reels-count="loves"><?php echo esc_html( paijo_format_feed_reels_metric( $loves_count ) ); ?></span>
 							</button>
 
-							<button type="button" class="group flex items-center gap-2 text-sm font-bold transition-colors hover:text-[#f1818f] focus:outline-none cursor-pointer" data-toko-action="share" aria-label="<?php esc_attr_e( 'Share this post', 'paijo' ); ?>">
+							<button type="button" class="group flex items-center gap-2 text-sm font-bold transition-colors hover:text-[#f1818f] focus:outline-none cursor-pointer" data-feed-reels-action="share" aria-label="<?php esc_attr_e( 'Share this post', 'paijo' ); ?>">
 								<svg class="h-8 w-8 fill-none stroke-current transition-colors" viewBox="0 0 24 24" stroke-width="1.9">
 									<circle cx="18" cy="5" r="3" />
 									<circle cx="6" cy="12" r="3" />
@@ -150,7 +150,7 @@ get_header();
 									<path d="M8.6 13.5 15.4 17.5" />
 								</svg>
 								<span data-share-label><?php esc_html_e( 'Bagikan', 'paijo' ); ?></span>
-								<span class="text-neutral-500 dark:text-neutral-400" data-toko-count="shares"><?php echo esc_html( paijo_format_toko_metric( $shares_count ) ); ?></span>
+								<span class="text-neutral-500 dark:text-neutral-400" data-feed-reels-count="shares"><?php echo esc_html( paijo_format_feed_reels_metric( $shares_count ) ); ?></span>
 							</button>
 
 							<a href="<?php echo esc_url( $archive_url ); ?>" class="ml-auto flex h-11 w-11 items-center justify-center rounded-full bg-neutral-100 text-neutral-500 transition-colors hover:bg-neutral-200 hover:text-neutral-950 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:hover:text-white" aria-label="<?php esc_attr_e( 'Open PJ Feed archive', 'paijo' ); ?>">
@@ -167,7 +167,7 @@ get_header();
 			
 			<script>
 			document.addEventListener('DOMContentLoaded', function() {
-				const actionRoot = document.querySelector('[data-toko-actions]');
+				const actionRoot = document.querySelector('[data-feed-reels-actions]');
 
 				if (!actionRoot) {
 					return;
@@ -178,14 +178,14 @@ get_header();
 				const nonce = actionRoot.dataset.nonce;
 				const postTitle = actionRoot.dataset.title;
 				const postUrl = actionRoot.dataset.url;
-				const loveButton = actionRoot.querySelector('[data-toko-action="love"]');
-				const shareButton = actionRoot.querySelector('[data-toko-action="share"]');
+				const loveButton = actionRoot.querySelector('[data-feed-reels-action="love"]');
+				const shareButton = actionRoot.querySelector('[data-feed-reels-action="share"]');
 				const shareLabel = actionRoot.querySelector('[data-share-label]');
-				const lovedKey = `paijo_toko_loved_${postId}`;
+				const lovedKey = `paijo_feed_reels_loved_${postId}`;
 
 				function updateMetric(metric, delta = 1) {
 					const body = new URLSearchParams({
-						action: 'paijo_toko_metric',
+						action: 'paijo_feed_reels_metric',
 						post_id: postId,
 						metric,
 						delta: String(delta),
@@ -205,7 +205,7 @@ get_header();
 								throw new Error('Metric update failed');
 							}
 
-							const countNode = actionRoot.querySelector(`[data-toko-count="${metric}"]`);
+							const countNode = actionRoot.querySelector(`[data-feed-reels-count="${metric}"]`);
 
 							if (countNode) {
 								countNode.textContent = payload.data.formatted;
@@ -273,7 +273,7 @@ get_header();
 			<?php
 			$related = new WP_Query(
 				array(
-					'post_type'           => 'toko_bercerita',
+					'post_type'           => 'feed_reels',
 					'post_status'         => 'publish',
 					'posts_per_page'      => 3,
 					'post__not_in'        => array( get_the_ID() ),

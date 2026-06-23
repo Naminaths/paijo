@@ -97,27 +97,27 @@ function paijo_save_hero_metabox_data( int $post_id ): void {
 }
 
 /**
- * Register Metabox for Toko Bercerita Social Media Embed URL
+ * Register Metabox for Feed Reels Social Media Embed URL
  */
-add_action( 'add_meta_boxes', 'paijo_register_toko_metabox' );
-function paijo_register_toko_metabox(): void {
+add_action( 'add_meta_boxes', 'paijo_register_feed_reels_metabox' );
+function paijo_register_feed_reels_metabox(): void {
 	add_meta_box(
-		'paijo_toko_metabox',
+		'paijo_feed_reels_metabox',
 		__( 'Pengaturan Embed', 'paijo' ),
-		'paijo_toko_metabox_callback',
-		'toko_bercerita',
+		'paijo_feed_reels_metabox_callback',
+		'feed_reels',
 		'normal',
 		'high'
 	);
 }
 
-function paijo_toko_metabox_callback( WP_Post $post ): void {
-	wp_nonce_field( 'paijo_toko_metabox_save', 'paijo_toko_metabox_nonce' );
-	$embed_url = get_post_meta( $post->ID, '_paijo_toko_embed_url', true );
+function paijo_feed_reels_metabox_callback( WP_Post $post ): void {
+	wp_nonce_field( 'paijo_feed_reels_metabox_save', 'paijo_feed_reels_metabox_nonce' );
+	$embed_url = get_post_meta( $post->ID, '_paijo_feed_reels_embed_url', true );
 	?>
 	<div style="margin: 10px 0;">
-		<label for="paijo_toko_embed_url" style="display: block; font-weight: bold; margin-bottom: 8px;"><?php esc_html_e( 'URL Embed Instagram / TikTok', 'paijo' ); ?></label>
-		<input type="url" name="paijo_toko_embed_url" id="paijo_toko_embed_url" value="<?php echo esc_url( $embed_url ); ?>" class="large-text" placeholder="Contoh: https://www.instagram.com/p/C7X... atau https://www.tiktok.com/@pandanganjogja/video/..." style="width: 100%; padding: 8px; font-size: 14px;">
+		<label for="paijo_feed_reels_embed_url" style="display: block; font-weight: bold; margin-bottom: 8px;"><?php esc_html_e( 'URL Embed Instagram / TikTok', 'paijo' ); ?></label>
+		<input type="url" name="paijo_feed_reels_embed_url" id="paijo_feed_reels_embed_url" value="<?php echo esc_url( $embed_url ); ?>" class="large-text" placeholder="Contoh: https://www.instagram.com/p/C7X... atau https://www.tiktok.com/@pandanganjogja/video/..." style="width: 100%; padding: 8px; font-size: 14px;">
 		<p class="description" style="margin-top: 8px;">
 			<?php esc_html_e( 'Masukkan URL post Instagram atau TikTok lengkap. WordPress akan mengambil dan merender video/post tersebut secara otomatis menggunakan oEmbed.', 'paijo' ); ?>
 		</p>
@@ -125,14 +125,14 @@ function paijo_toko_metabox_callback( WP_Post $post ): void {
 	<?php
 }
 
-add_action( 'save_post', 'paijo_save_toko_metabox_data' );
-function paijo_save_toko_metabox_data( int $post_id ): void {
-	if ( ! isset( $_POST['paijo_toko_metabox_nonce'] ) ) {
+add_action( 'save_post', 'paijo_save_feed_reels_metabox_data' );
+function paijo_save_feed_reels_metabox_data( int $post_id ): void {
+	if ( ! isset( $_POST['paijo_feed_reels_metabox_nonce'] ) ) {
 		return;
 	}
 
-	$nonce = sanitize_text_field( wp_unslash( $_POST['paijo_toko_metabox_nonce'] ) );
-	if ( ! wp_verify_nonce( $nonce, 'paijo_toko_metabox_save' ) ) {
+	$nonce = sanitize_text_field( wp_unslash( $_POST['paijo_feed_reels_metabox_nonce'] ) );
+	if ( ! wp_verify_nonce( $nonce, 'paijo_feed_reels_metabox_save' ) ) {
 		return;
 	}
 	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
@@ -142,22 +142,22 @@ function paijo_save_toko_metabox_data( int $post_id ): void {
 		return;
 	}
 
-	if ( isset( $_POST['paijo_toko_embed_url'] ) ) {
-		$embed_url = esc_url_raw( wp_unslash( $_POST['paijo_toko_embed_url'] ) );
-		$old_url   = get_post_meta( $post_id, '_paijo_toko_embed_url', true );
-		update_post_meta( $post_id, '_paijo_toko_embed_url', $embed_url );
+	if ( isset( $_POST['paijo_feed_reels_embed_url'] ) ) {
+		$embed_url = esc_url_raw( wp_unslash( $_POST['paijo_feed_reels_embed_url'] ) );
+		$old_url   = get_post_meta( $post_id, '_paijo_feed_reels_embed_url', true );
+		update_post_meta( $post_id, '_paijo_feed_reels_embed_url', $embed_url );
 
 		if ( $embed_url !== $old_url || ! has_post_thumbnail( $post_id ) ) {
 			paijo_download_social_thumbnail_and_set( $post_id, $embed_url );
 		}
 	} else {
-		delete_post_meta( $post_id, '_paijo_toko_embed_url' );
+		delete_post_meta( $post_id, '_paijo_feed_reels_embed_url' );
 	}
 }
 
 function paijo_download_social_thumbnail_and_set( int $post_id, string $url ): void {
 	// Prevent loops
-	remove_action( 'save_post', 'paijo_save_toko_metabox_data' );
+	remove_action( 'save_post', 'paijo_save_feed_reels_metabox_data' );
 
 	$url       = trim( $url );
 	$image_url = '';
@@ -183,7 +183,7 @@ function paijo_download_social_thumbnail_and_set( int $post_id, string $url ): v
 	}
 
 	if ( empty( $image_url ) ) {
-		add_action( 'save_post', 'paijo_save_toko_metabox_data' );
+		add_action( 'save_post', 'paijo_save_feed_reels_metabox_data' );
 		return;
 	}
 
@@ -194,7 +194,7 @@ function paijo_download_social_thumbnail_and_set( int $post_id, string $url ): v
 
 	$tmp = download_url( $image_url );
 	if ( is_wp_error( $tmp ) ) {
-		add_action( 'save_post', 'paijo_save_toko_metabox_data' );
+		add_action( 'save_post', 'paijo_save_feed_reels_metabox_data' );
 		return;
 	}
 
@@ -205,7 +205,7 @@ function paijo_download_social_thumbnail_and_set( int $post_id, string $url ): v
 
 	// Overwrite default name if empty or generic
 	if ( empty( $file_array['name'] ) || strpos( $file_array['name'], '.' ) === false ) {
-		$file_array['name'] = 'toko-thumbnail-' . $post_id . '.jpg';
+		$file_array['name'] = 'feed-reels-thumbnail-' . $post_id . '.jpg';
 	}
 
 	$thumb_id = media_handle_sideload( $file_array, $post_id, get_the_title( $post_id ) );
@@ -214,5 +214,5 @@ function paijo_download_social_thumbnail_and_set( int $post_id, string $url ): v
 		set_post_thumbnail( $post_id, $thumb_id );
 	}
 
-	add_action( 'save_post', 'paijo_save_toko_metabox_data' );
+	add_action( 'save_post', 'paijo_save_feed_reels_metabox_data' );
 }

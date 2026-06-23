@@ -373,20 +373,20 @@ $hero_ids   = paijo_post_ids_from_query( $hero_query );
 		<?php endif; ?>
 	<?php endif; ?>
 
-	<!-- Toko Bercerita Section -->
+	<!-- Feed Reels Section -->
 	<?php
-	$toko_bercerita_url = get_post_type_archive_link( 'toko_bercerita' ) ?: home_url( '/pj-feed/' );
+	$feed_reels_url = get_post_type_archive_link( 'feed_reels' ) ?: home_url( '/pj-feed/' );
 
-	$toko_query = new WP_Query(
+	$feed_reels_query = new WP_Query(
 		array(
-			'post_type'           => 'toko_bercerita',
+			'post_type'           => 'feed_reels',
 			'post_status'         => 'publish',
 			'posts_per_page'      => 9, // Query up to 9 posts to make a total of 10 slides including the CTA card
 			'ignore_sticky_posts' => true,
 		)
 	);
 
-	if ( $toko_query->have_posts() ) :
+	if ( $feed_reels_query->have_posts() ) :
 		?>
 		<section class="paijo-section border-b border-paijo-line bg-paijo-paper relative overflow-hidden">
 			<!-- Background Layer: Positioned specifically in the bottom right corner with custom dark mode pink filter -->
@@ -397,18 +397,18 @@ $hero_ids   = paijo_post_ids_from_query( $hero_query );
 					<span class="inline-block bg-[#f1818f]/10 text-[#f1818f] text-[10px] font-black uppercase tracking-[0.15em] px-3 py-1 rounded-full mb-3">
 						Rubrik Video
 					</span>
-					<h2 class="text-3xl sm:text-5xl font-sans font-black tracking-tight text-paijo-ink"><?php esc_html_e( 'Toko Bercerita', 'paijo' ); ?></h2>
+					<h2 class="text-3xl sm:text-5xl font-sans font-black tracking-tight text-paijo-ink"><?php esc_html_e( 'Feed Reels', 'paijo' ); ?></h2>
 					<p class="mt-3 text-sm sm:text-base text-paijo-muted max-w-2xl mx-auto"><?php esc_html_e( 'Cerita di balik kuliner legendaris, toko unik, dan bisnis kreatif di Jogja.', 'paijo' ); ?></p>
 				</div>
 
 				<!-- Horizontal Scroll Slider Wrapper -->
 				<div class="relative group">
 					<!-- Slider Container -->
-					<div id="toko-slider" class="grid grid-flow-col auto-cols-[82%] md:auto-cols-[46%] lg:auto-cols-[calc(20%-16px)] overflow-x-auto snap-x snap-mandatory gap-5 pb-5 scrollbar-none">
+					<div id="feed-reels-slider" class="grid grid-flow-col auto-cols-[82%] md:auto-cols-[46%] lg:auto-cols-[calc(20%-16px)] overflow-x-auto snap-x snap-mandatory gap-5 pb-5 scrollbar-none">
 						<?php
-						while ( $toko_query->have_posts() ) :
-							$toko_query->the_post();
-							$embed_url = get_post_meta( get_the_ID(), '_paijo_toko_embed_url', true );
+						while ( $feed_reels_query->have_posts() ) :
+							$feed_reels_query->the_post();
+							$embed_url = get_post_meta( get_the_ID(), '_paijo_feed_reels_embed_url', true );
 							?>
 							<div class="snap-start flex flex-col bg-white dark:bg-neutral-900 border border-paijo-line rounded-2xl shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md">
 								<!-- Thumbnail Container -->
@@ -447,14 +447,14 @@ $hero_ids   = paijo_post_ids_from_query( $hero_query );
 						<!-- Last Card: Watch More Recommendation -->
 						<div class="snap-start flex flex-col bg-white dark:bg-neutral-900 rounded-2xl shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md">
 							<!-- CTA Container -->
-							<a href="<?php echo esc_url( $toko_bercerita_url ); ?>" class="group relative w-full h-[400px] bg-gradient-to-br from-[#050b14] to-[#121b2d] flex flex-col justify-between p-6 overflow-hidden">
+							<a href="<?php echo esc_url( $feed_reels_url ); ?>" class="group relative w-full h-[400px] bg-gradient-to-br from-[#050b14] to-[#121b2d] flex flex-col justify-between p-6 overflow-hidden">
 								<!-- Background Pattern Circle -->
 								<div class="absolute -right-10 -bottom-10 w-44 h-44 rounded-full bg-[#f1818f]/10 group-hover:bg-[#f1818f]/20 transition-all duration-500"></div>
 								
 								<div class="relative z-10 mt-4">
 									<span class="text-[9px] font-black uppercase tracking-widest text-[#f1818f]">Lihat Semua</span>
 									<h3 class="font-sans font-black text-2xl text-white mt-4 leading-tight group-hover:text-[#f1818f] transition-colors"><?php esc_html_e( 'Tonton Video Lainnya', 'paijo' ); ?></h3>
-									<p class="text-xs text-neutral-400 mt-3 leading-relaxed"><?php esc_html_e( 'Jelajahi kisah kuliner legendaris dan bisnis kreatif Jogja selengkapnya di rubrik Toko Bercerita.', 'paijo' ); ?></p>
+									<p class="text-xs text-neutral-400 mt-3 leading-relaxed"><?php esc_html_e( 'Jelajahi kisah kuliner legendaris dan bisnis kreatif Jogja selengkapnya di rubrik Feed Reels.', 'paijo' ); ?></p>
 								</div>
 
 								<div class="relative z-10 mb-4 self-start">
@@ -475,7 +475,7 @@ $hero_ids   = paijo_post_ids_from_query( $hero_query );
 					</div>
 
 					<!-- Next Arrow Button Overlay -->
-					<button id="toko-next-btn" class="absolute -right-4 top-[200px] -translate-y-1/2 z-20 flex items-center justify-center w-14 h-14 rounded-2xl bg-[#f1818f] text-white hover:bg-[#d96a78] shadow-xl hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer" aria-label="Next videos">
+					<button id="feed-reels-next-btn" class="absolute -right-4 top-[200px] -translate-y-1/2 z-20 flex items-center justify-center w-14 h-14 rounded-2xl bg-[#f1818f] text-white hover:bg-[#d96a78] shadow-xl hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer" aria-label="Next videos">
 						<svg class="w-6 h-6 stroke-current fill-none" stroke-width="3" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
 							<polyline points="9 18 15 12 9 6"></polyline>
 						</svg>
@@ -484,8 +484,8 @@ $hero_ids   = paijo_post_ids_from_query( $hero_query );
 
 				<script>
 				document.addEventListener('DOMContentLoaded', function() {
-					const container = document.getElementById('toko-slider');
-					const nextBtn = document.getElementById('toko-next-btn');
+					const container = document.getElementById('feed-reels-slider');
+					const nextBtn = document.getElementById('feed-reels-next-btn');
 					if (container && nextBtn) {
 						nextBtn.addEventListener('click', function() {
 							const firstCard = container.firstElementChild;

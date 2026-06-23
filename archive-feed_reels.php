@@ -1,6 +1,6 @@
 <?php
 /**
- * Archive template for Toko Bercerita.
+ * Archive template for Feed Reels.
  *
  * @package Paijo
  */
@@ -10,14 +10,14 @@ get_header();
 $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 
 $args = array(
-	'post_type'           => 'toko_bercerita',
+	'post_type'           => 'feed_reels',
 	'post_status'         => 'publish',
 	'paged'               => $paged,
 	'posts_per_page'      => 9,
 	'ignore_sticky_posts' => true,
 );
 
-$toko_query = new WP_Query( $args );
+$feed_reels_query = new WP_Query( $args );
 ?>
 
 <main id="main-content" class="paijo-section bg-paijo-card text-paijo-ink transition-colors duration-300">
@@ -27,27 +27,27 @@ $toko_query = new WP_Query( $args );
 		<nav class="flex items-center gap-2 text-[10px] sm:text-xs font-bold text-neutral-400 uppercase tracking-widest mb-4" aria-label="Breadcrumb">
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="hover:text-paijo-accent transition-colors">Home</a>
 			<span class="text-neutral-300" aria-hidden="true">/</span>
-			<span class="text-neutral-500"><?php esc_html_e( 'Toko Bercerita', 'paijo' ); ?></span>
+			<span class="text-neutral-500"><?php esc_html_e( 'Feed Reels', 'paijo' ); ?></span>
 		</nav>
 
 		<!-- Header Section -->
-		<div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-10 border-b border-neutral-100 dark:border-neutral-800/60 pb-8">
+		<div class="mb-12">
 			<div class="max-w-3xl">
 				<span class="inline-block paijo-category-capsule px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.15em] mb-3">
 					Rubrik Video
 				</span>
-				<h1 class="text-3xl sm:text-4xl lg:text-5xl font-sans font-extrabold text-paijo-ink leading-tight"><?php esc_html_e( 'Toko Bercerita', 'paijo' ); ?></h1>
+				<h1 class="text-3xl sm:text-4xl lg:text-5xl font-sans font-extrabold text-paijo-ink leading-tight"><?php esc_html_e( 'Feed Reels', 'paijo' ); ?></h1>
 				<div class="mt-4 text-paijo-muted text-sm sm:text-base leading-relaxed"><?php esc_html_e( 'Cerita di balik kuliner legendaris, toko unik, dan bisnis kreatif di Jogja.', 'paijo' ); ?></div>
 			</div>
 		</div>
 
 		<!-- Grid layout -->
-		<?php if ( $toko_query->have_posts() ) : ?>
+		<?php if ( $feed_reels_query->have_posts() ) : ?>
 			<div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
 				<?php
-				while ( $toko_query->have_posts() ) :
-					$toko_query->the_post();
-					$embed_url = get_post_meta( get_the_ID(), '_paijo_toko_embed_url', true );
+				while ( $feed_reels_query->have_posts() ) :
+					$feed_reels_query->the_post();
+					$embed_url = get_post_meta( get_the_ID(), '_paijo_feed_reels_embed_url', true );
 					?>
 					<div class="flex flex-col bg-white dark:bg-neutral-900 border border-paijo-line rounded-2xl shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md">
 						<!-- Thumbnail Container -->
@@ -103,7 +103,7 @@ $toko_query = new WP_Query( $args );
 				'base'      => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
 				'format'    => '?paged=%#%',
 				'current'   => max( 1, $paged ),
-				'total'     => $toko_query->max_num_pages,
+				'total'     => $feed_reels_query->max_num_pages,
 				'prev_text' => '&larr; Prev',
 				'next_text' => 'Next &rarr;',
 				'type'      => 'array',
@@ -131,7 +131,7 @@ $toko_query = new WP_Query( $args );
 
 		<?php else : ?>
 			<div class="max-w-2xl mx-auto py-12 text-center">
-				<p class="text-lg font-bold text-paijo-muted mb-4"><?php esc_html_e( 'Belum ada video Toko Bercerita.', 'paijo' ); ?></p>
+				<p class="text-lg font-bold text-paijo-muted mb-4"><?php esc_html_e( 'Belum ada video Feed Reels.', 'paijo' ); ?></p>
 			</div>
 		<?php endif; ?>
 
