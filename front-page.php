@@ -474,7 +474,13 @@ $hero_ids   = paijo_post_ids_from_query( $hero_query );
 						?>
 					</div>
 
-					<!-- Next Arrow Button Overlay -->
+					<!-- Navigation Arrow Buttons Overlay -->
+					<button id="feed-reels-prev-btn" class="absolute -left-4 top-[200px] -translate-y-1/2 z-20 flex items-center justify-center w-14 h-14 rounded-2xl bg-[#f1818f] text-white hover:bg-[#d96a78] shadow-xl hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer opacity-0 pointer-events-none" aria-label="Previous videos">
+						<svg class="w-6 h-6 stroke-current fill-none" stroke-width="3" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+							<polyline points="15 18 9 12 15 6"></polyline>
+						</svg>
+					</button>
+
 					<button id="feed-reels-next-btn" class="absolute -right-4 top-[200px] -translate-y-1/2 z-20 flex items-center justify-center w-14 h-14 rounded-2xl bg-[#f1818f] text-white hover:bg-[#d96a78] shadow-xl hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer" aria-label="Next videos">
 						<svg class="w-6 h-6 stroke-current fill-none" stroke-width="3" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
 							<polyline points="9 18 15 12 9 6"></polyline>
@@ -485,22 +491,62 @@ $hero_ids   = paijo_post_ids_from_query( $hero_query );
 				<script>
 				document.addEventListener('DOMContentLoaded', function() {
 					const container = document.getElementById('feed-reels-slider');
+					const prevBtn = document.getElementById('feed-reels-prev-btn');
 					const nextBtn = document.getElementById('feed-reels-next-btn');
-					if (container && nextBtn) {
+					
+					if (container && nextBtn && prevBtn) {
+						// Use IntersectionObserver for 100% reliable detection of start/end
+						const observerOptions = {
+							root: container,
+							threshold: 0.95 // Trigger when card is almost fully visible
+						};
+
+						const observer = new IntersectionObserver((entries) => {
+							entries.forEach(entry => {
+								// Check if first card is visible
+								if (entry.target === container.firstElementChild) {
+									if (entry.isIntersecting) {
+										prevBtn.classList.add('opacity-0', 'pointer-events-none');
+									} else {
+										prevBtn.classList.remove('opacity-0', 'pointer-events-none');
+									}
+								}
+								// Check if last card is visible
+								if (entry.target === container.lastElementChild) {
+									if (entry.isIntersecting) {
+										nextBtn.classList.add('opacity-0', 'pointer-events-none');
+									} else {
+										nextBtn.classList.remove('opacity-0', 'pointer-events-none');
+									}
+								}
+							});
+						}, observerOptions);
+
+						// Observe the first and last slides
+						if (container.firstElementChild) {
+							observer.observe(container.firstElementChild);
+						}
+						if (container.lastElementChild) {
+							observer.observe(container.lastElementChild);
+						}
+
 						nextBtn.addEventListener('click', function() {
 							const firstCard = container.firstElementChild;
 							if (firstCard) {
 								const cardWidth = firstCard.clientWidth;
 								const gap = parseInt(window.getComputedStyle(container).gap) || 20;
 								const scrollAmount = cardWidth + gap;
-								
-								const maxScrollLeft = container.scrollWidth - container.clientWidth;
-								if (container.scrollLeft >= maxScrollLeft - 10) {
-									// Wrap around to the start
-									container.scrollTo({ left: 0, behavior: 'smooth' });
-								} else {
-									container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-								}
+								container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+							}
+						});
+
+						prevBtn.addEventListener('click', function() {
+							const firstCard = container.firstElementChild;
+							if (firstCard) {
+								const cardWidth = firstCard.clientWidth;
+								const gap = parseInt(window.getComputedStyle(container).gap) || 20;
+								const scrollAmount = cardWidth + gap;
+								container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
 							}
 						});
 					}
