@@ -55,7 +55,7 @@ $btn_class = $is_home
 				</a>
 			</div>
 
-			<!-- Column 4: Tagline Inovatif & Terpercaya (Right) -->
+			<!-- Column 4: Tagline Inovatif & Tepercaya (Right) -->
 			<div class="flex justify-end items-center w-1/3 ml-auto z-10 gap-3">
 				<button class="<?php echo esc_attr( $btn_class ); ?> paijo-theme-toggle" type="button" data-paijo-theme-toggle aria-label="<?php esc_attr_e( 'Toggle Theme', 'paijo' ); ?>">
 					<svg class="hidden dark:block h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -79,7 +79,7 @@ $btn_class = $is_home
 							Inovatif
 						</span>
 						<span class="text-[10px] sm:text-xs font-black uppercase tracking-[0.15em] text-white leading-tight">
-							Terpercaya
+							Tepercaya
 						</span>
 					</div>
 					<!-- Large Hashtag Icon -->
