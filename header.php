@@ -19,6 +19,7 @@
 			}
 		})();
 	</script>
+	<link rel="icon" href="<?php echo esc_url( get_stylesheet_directory_uri() . '/pj-logo.ico' ); ?>" type="image/x-icon">
 	<?php wp_head(); ?>
 	<style>
 		/* Global override for Gutenberg Image Captions (News Media Best Practice) */
