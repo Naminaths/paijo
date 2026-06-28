@@ -36,8 +36,7 @@ $admin_email = get_option( 'admin_email' );
                         <?php if ( has_custom_logo() ) : ?>
                             <span class="h-12 w-auto object-contain inline-block"><?php the_custom_logo(); ?></span>
                         <?php else : ?>
-                            <img class="h-12 w-auto object-contain block dark:hidden" src="<?php echo esc_url( PAIJO_URI . '/assets/images/logo.png?ver=' . paijo_asset_version( 'assets/images/logo.png' ) ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
-                            <img class="h-12 w-auto object-contain hidden dark:block" src="<?php echo esc_url( PAIJO_URI . '/assets/images/logo-white.png?ver=' . paijo_asset_version( 'assets/images/logo-white.png' ) ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
+                            <img class="h-12 w-auto object-contain" src="<?php echo esc_url( PAIJO_URI . '/assets/images/pj-logo.png?ver=' . paijo_asset_version( 'assets/images/pj-logo.png' ) ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
                         <?php endif; ?>
                     </div>
 				</div>
