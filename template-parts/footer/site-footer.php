@@ -16,11 +16,9 @@ $footer_text = get_theme_mod( 'paijo_footer_text', 'Como 1907 Official Website' 
 	<!-- Logos Row with extra spacing below -->
 	<div class="paijo-container flex justify-center items-center mb-16">
 		<!-- Site Custom Logo (Full Color) -->
-		<?php if ( has_custom_logo() ) : ?>
-			<span class="h-12 w-auto object-contain inline-block"><?php the_custom_logo(); ?></span>
-		<?php else : ?>
-			<img class="h-12 w-auto object-contain" src="<?php echo esc_url( PAIJO_URI . '/assets/images/pj-logo.png?ver=' . paijo_asset_version( 'assets/images/pj-logo.png' ) ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
-		<?php endif; ?>
+			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="inline-block">
+				<img class="h-12 w-auto object-contain" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/logo.png' ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
+			</a>
 	</div>
 
 	<!-- Links & Social Grid -->

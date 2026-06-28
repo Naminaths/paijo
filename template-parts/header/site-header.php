@@ -45,15 +45,9 @@ $btn_class = $is_home
 
 			<!-- Column 3: Logo Pandangan Jogja (Center) -->
 			<div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 flex items-center justify-center">
-				<?php if ( has_custom_logo() ) : ?>
-					<div class="max-w-44 block [&_img]:h-10 [&_img]:w-auto [&_img]:object-contain [&_a]:flex [&_a]:items-center [&_a]:no-underline">
-						<?php the_custom_logo(); ?>
-					</div>
-				<?php else : ?>
 					<a class="flex items-center no-underline" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-						<img class="custom-logo h-10 w-auto object-contain" src="<?php echo esc_url( PAIJO_URI . '/assets/images/logo.png?ver=' . paijo_asset_version( 'assets/images/logo.png' ) ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
+						<img class="custom-logo h-10 w-auto object-contain" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/logo.png' ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
 					</a>
-				<?php endif; ?>
 			</div>
 
 			<!-- Column 4: Tagline Inovatif & Tepercaya (Right) -->
