@@ -51,7 +51,7 @@ $btn_class = $is_home
 					</div>
 				<?php else : ?>
 					<a class="flex items-center no-underline" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-						<img class="custom-logo h-10 w-auto object-contain" src="<?php echo esc_url( PAIJO_URI . '/assets/images/pj-logo.png?ver=' . paijo_asset_version( 'assets/images/pj-logo.png' ) ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
+						<img class="custom-logo h-10 w-auto object-contain" src="<?php echo esc_url( PAIJO_URI . '/assets/images/logo.png?ver=' . paijo_asset_version( 'assets/images/logo.png' ) ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
 					</a>
 				<?php endif; ?>
 			</div>
