@@ -424,7 +424,7 @@ $hero_ids   = paijo_post_ids_from_query( $hero_query );
 				</div>
 
 				<!-- Horizontal Scroll Slider Wrapper -->
-				<div class="relative group">
+				<div class="relative">
 					<!-- Slider Container -->
 					<div id="feed-reels-slider" class="grid grid-flow-col auto-cols-[82%] md:auto-cols-[46%] lg:auto-cols-[calc(20%-16px)] overflow-x-auto snap-x snap-mandatory gap-5 pb-5 scrollbar-none">
 						<?php
