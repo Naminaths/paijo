@@ -146,9 +146,7 @@ $admin_email = get_option( 'admin_email' );
 								<?php echo esc_html( $admin_email ); ?>
 							</a>
 						</div>
-
 					<?php endif; ?>
-
 				</div>
 			</article>
 		<?php endwhile; ?>

@@ -111,13 +111,13 @@ get_header();
 					</div>
 
 					<!-- Scrollable Content: Title + CMS Caption + Actions -->
-					<div class="flex-1 overflow-y-auto p-6 space-y-6 scrollbar-none" id="sidebar-scroll-content">
+					<div class="flex-1 overflow-y-auto overflow-x-hidden w-full p-6 md:p-8 space-y-6 scrollbar-none" id="sidebar-scroll-content">
 						<!-- Post Title & Content/Caption -->
-						<div class="font-sans">
-							<h1 class="text-xl sm:text-2xl font-bold leading-snug tracking-tight text-neutral-900 dark:text-white mb-4">
+						<div class="font-sans w-full max-w-full">
+							<h1 class="text-xl sm:text-2xl font-bold leading-snug tracking-tight text-neutral-900 dark:text-white mb-4 break-words">
 								<?php the_title(); ?>
 							</h1>
-							<div class="prose prose-neutral dark:prose-invert max-w-none text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed font-sans [&>p]:mb-4">
+							<div class="prose prose-neutral dark:prose-invert max-w-none w-full text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed font-sans [&>p]:mb-4 [&>p]:break-words break-words" style="word-break: break-word; overflow-wrap: anywhere;">
 								<?php the_content(); ?>
 							</div>
 						</div>
