@@ -36,7 +36,7 @@ $admin_email = get_option( 'admin_email' );
                         <?php if ( has_custom_logo() ) : ?>
                             <span class="h-12 w-auto object-contain inline-block"><?php the_custom_logo(); ?></span>
                         <?php else : ?>
-                            <img class="h-12 w-auto object-contain" src="<?php echo esc_url( PAIJO_URI . '/assets/images/pj-logo.png?ver=' . paijo_asset_version( 'assets/images/pj-logo.png' ) ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
+                            <img class="h-12 w-auto object-contain" src="<?php echo esc_url( PAIJO_URI . '/assets/images/logo.png?ver=' . paijo_asset_version( 'assets/images/logo.png' ) ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
                         <?php endif; ?>
                     </div>
 				</div>
@@ -77,9 +77,30 @@ $admin_email = get_option( 'admin_email' );
 						</p>
 
 						<!-- Misi -->
-                            </p>
-                        </div>
+						<h2 style="margin-top: 3rem; margin-bottom: 1.5rem; text-align: center;">Misi <?php echo esc_html( $site_name ); ?></h2>
 
+						<div style="margin-bottom: 2.5rem;">
+							<h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 1rem;">1. Jurnalisme Bermartabat</h3>
+							<p style="margin-bottom: 1rem;">
+								Membangun ekosistem media yang sehat melalui insan jurnalistik yang sejahtera, kredibel, dan terus bertumbuh dalam melayani audiens. <?php echo esc_html( $site_name ); ?> percaya kualitas jurnalisme lahir dari kualitas manusia di baliknya.
+							</p>
+							<p>
+								Karena hanya dari jurnalis yang bermartabat, karya yang benar-benar dipercaya bisa lahir.
+							</p>
+						</div>
+
+						<div style="margin-bottom: 2.5rem;">
+							<h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 1rem;">2. Terus Inovatif dan Tepercaya</h3>
+							<p style="margin-bottom: 1rem;">
+								<?php echo esc_html( $site_name ); ?> meyakini bahwa media selalu lahir dari teknologi: dari mesin cetak, siaran radio, televisi, web, aplikasi, media sosial, hingga kecerdasan buatan. Di setiap lompatan teknologi, satu hal tidak pernah berubah: kepercayaan publik adalah mata uang utama.
+							</p>
+							<p style="margin-bottom: 1rem;">
+								PJ berkomitmen untuk selalu hadir di garis terdepan teknologi komunikasi dengan verifikasi dan relevansi sebagai senjata utama.
+							</p>
+							<p style="font-weight: bold; color: var(--paijo-muted);">
+								"Karena hanya karya yang kredibel dan relevan yang mampu menggerakkan orang."
+							</p>
+						</div>
                         <div style="margin-bottom: 2.5rem;">
                             <h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 1rem;">3. Dampak Nyata</h3>
                             <p style="margin-bottom: 1rem;">
@@ -89,9 +110,6 @@ $admin_email = get_option( 'admin_email' );
                                 Bersama masyarakat, bisnis, pemerintah, kampus, dan komunitas, PJ membangun berbagai inisiatif yang mendorong perubahan sosial dan pembangunan berkelanjutan di Yogyakarta dan Indonesia.
                             </p>
                         </div>
-
-					<?php endif; ?>
-
 				</div>
 			</article>
 		<?php endwhile; ?>

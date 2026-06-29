@@ -70,8 +70,8 @@ $admin_email = get_option( 'admin_email' );
 								</div>
 								<h3 style="font-size: 1.25rem; font-weight: 800; margin-top: 0; margin-bottom: 0.5rem;">Email</h3>
 								<p style="margin: 0; font-size: 0.95rem; color: var(--paijo-muted); line-height: 1.6;">
-									Redaksi: <a href="mailto:<?php echo esc_attr( $admin_email ); ?>" style="color: #f1818f; font-weight: bold;"><?php echo esc_html( $admin_email ); ?></a><br>
-									Iklan & Kerjasama: <a href="mailto:<?php echo esc_attr( $admin_email ); ?>" style="color: #f1818f; font-weight: bold;"><?php echo esc_html( $admin_email ); ?></a>
+									Redaksi: <a href="mailto:<?php echo esc_attr( $admin_email ); ?>" style="color: #f1818f; font-weight: bold; word-break: break-all;"><?php echo esc_html( $admin_email ); ?></a><br>
+									Iklan & Kerjasama: <a href="mailto:<?php echo esc_attr( $admin_email ); ?>" style="color: #f1818f; font-weight: bold; word-break: break-all;"><?php echo esc_html( $admin_email ); ?></a>
 								</p>
 							</div>
 

@@ -89,7 +89,7 @@ get_header();
 							<div class="relative w-10 h-10 rounded-full p-[2px] bg-gradient-to-tr from-yellow-500 via-pink-500 to-purple-600 flex items-center justify-center shrink-0">
 								<div class="w-full h-full rounded-full border border-black bg-neutral-900 flex items-center justify-center overflow-hidden">
 									<?php if ( $logo_url ) : ?>
-										<img class="w-full h-full object-cover" src="<?php echo esc_url( $logo_url ); ?>" alt="pandanganjogja">
+										<img class="w-full h-full object-cover" src="<?php echo esc_url( $logo_url ); ?>" alt="Pandanganjogja">
 									<?php else : ?>
 										<span class="font-sans font-black text-xs text-white">P</span>
 									<?php endif; ?>
@@ -97,7 +97,7 @@ get_header();
 							</div>
 							<div class="flex flex-col">
 								<div class="flex items-center gap-1">
-									<span class="font-sans font-bold text-sm text-neutral-900 dark:text-white">pandanganjogja</span>
+									<span class="font-sans font-bold text-sm text-neutral-900 dark:text-white">Pandanganjogja</span>
 									<!-- verified check -->
 									<svg class="w-3.5 h-3.5 text-[#0095f6] fill-current" viewBox="0 0 24 24">
 										<path d="M12.003 2.001c-5.522 0-9.998 4.477-9.998 10s4.476 10 9.998 10 10-4.477 10-10-4.478-10-10-10zm4.505 7.793l-5.637 5.637a.579.579 0 01-.82 0l-2.818-2.819a.579.579 0 010-.82l.82-.82a.579.579 0 01.82 0l1.588 1.58 4.407-4.407a.579.579 0 01.82 0l.82.82a.579.579 0 010 .829z"/>
@@ -285,7 +285,7 @@ get_header();
 				?>
 				<div class="mt-8 border-t border-neutral-200 dark:border-neutral-800 pt-8">
 					<h2 class="text-xs font-sans font-bold text-neutral-400 dark:text-neutral-500 mb-6 uppercase tracking-widest">
-						More posts from <span class="text-neutral-900 dark:text-white font-extrabold">pandanganjogja</span>
+						More posts from <span class="text-neutral-900 dark:text-white font-extrabold">Pandanganjogja</span>
 					</h2>
 					
 					<div class="grid grid-cols-1 sm:grid-cols-3 gap-6">

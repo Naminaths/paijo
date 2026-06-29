@@ -101,8 +101,9 @@ $admin_email = get_option( 'admin_email' );
 						<div style="margin-top: 3rem; background: #f5f5f5; border-radius: 1rem; padding: 2rem; text-align: center;">
 							<h3 style="font-size: 1.5rem; font-weight: 900; margin-bottom: 1rem; margin-top: 0;">Mari Berkolaborasi!</h3>
 							<p style="color: var(--paijo-muted); margin-bottom: 1.5rem; max-width: 32rem; margin-left: auto; margin-right: auto;">Dapatkan <em>Media Kit</em> (profil audiens, statistik, dan daftar harga lengkap) dengan menghubungi tim bisnis kami. Mari diskusikan kampanye yang paling cocok untuk merek Anda.</p>
-							<a href="mailto:<?php echo esc_attr( $admin_email ); ?>" style="display: inline-block; background: #f1818f; color: white; font-weight: bold; padding: 0.875rem 2rem; border-radius: 9999px; text-decoration: none; transition: background-color 0.3s ease;">
-								Hubungi: <?php echo esc_html( $admin_email ); ?>
+							<a href="mailto:<?php echo esc_attr( $admin_email ); ?>" class="inline-flex flex-col sm:flex-row items-center justify-center bg-[#f1818f] text-white font-bold py-3.5 px-6 sm:px-8 rounded-full transition-colors w-full sm:w-auto hover:bg-[#d96a78] max-w-full no-underline">
+								<span class="sm:mr-1.5 mb-0.5 sm:mb-0 text-sm sm:text-base">Hubungi:</span>
+								<span class="break-all text-center text-sm sm:text-base"><?php echo esc_html( $admin_email ); ?></span>
 							</a>
 						</div>
 
