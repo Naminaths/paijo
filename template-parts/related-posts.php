@@ -5,10 +5,12 @@
  * @package Paijo
  */
 
-$post_type = get_post_type();
-$post_id   = get_the_ID();
+$post_type       = get_post_type();
+$post_id         = get_the_ID();
+$is_paijo_content = ( 'paijo_content' === $post_type );
 
-if ( 'paijo_content' === $post_type ) {
+if ( $is_paijo_content ) {
+	// Get the paijo_content_category terms for this post.
 	$terms = wp_get_post_terms( $post_id, 'paijo_content_category', array( 'fields' => 'ids' ) );
 	if ( empty( $terms ) || is_wp_error( $terms ) ) {
 		return;
@@ -63,12 +65,13 @@ if ( ! $related->have_posts() ) {
 				<!-- Left content -->
 				<div class="flex-1 min-w-0">
 					<!-- Title -->
-					<h3 class="font-sans font-extrabold text-sm sm:text-base text-paijo-ink leading-snug mb-2 sm:mb-3 line-clamp-2">
+					<h3 class="font-sans font-extrabold text-sm sm:text-base text-paijo-ink leading-snug <?php echo $is_paijo_content ? 'mb-1' : 'mb-2 sm:mb-3'; ?> line-clamp-2">
 						<a href="<?php the_permalink(); ?>" class="hover:text-paijo-accent transition-colors duration-200">
 							<?php the_title(); ?>
 						</a>
 					</h3>
 					
+					<?php if ( ! $is_paijo_content ) : ?>
 					<!-- Author & Meta -->
 					<div class="flex items-center flex-wrap gap-1.5 sm:gap-2 text-[10px] sm:text-xs text-paijo-muted">
 						<!-- Author Avatar -->
@@ -101,6 +104,12 @@ if ( ! $related->have_posts() ) {
 							?>
 						</span>
 					</div>
+					<?php else : ?>
+					<!-- Simple date for paijo_content related -->
+					<span class="text-[10px] sm:text-xs text-paijo-muted">
+						<?php echo esc_html( get_the_date() ); ?>
+					</span>
+					<?php endif; ?>
 				</div>
 
 				<!-- Right Thumbnail -->
