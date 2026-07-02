@@ -81,6 +81,69 @@
 		.paijo-prose .has-medium-font-size { font-size: var(--wp--preset--font-size--medium, 20px) !important; }
 		.paijo-prose .has-large-font-size { font-size: var(--wp--preset--font-size--large, 36px) !important; }
 		.paijo-prose .has-x-large-font-size { font-size: var(--wp--preset--font-size--x-large, 42px) !important; }
+
+		/* Custom Theme Toggle Switch */
+		.paijo-theme-switch {
+			position: relative;
+			display: inline-flex;
+			height: 32px;
+			width: 56px;
+			align-items: center;
+			border-radius: 9999px;
+			transition: background-color 0.3s, border-color 0.3s;
+			cursor: pointer;
+			border: 1px solid rgba(255, 255, 255, 0.3);
+			background-color: rgba(255, 255, 255, 0.2);
+		}
+		.paijo-theme-switch:hover {
+			background-color: rgba(255, 255, 255, 0.3);
+		}
+		header:not(.bg-transparent) .paijo-theme-switch {
+			background-color: rgba(0, 0, 0, 0.2);
+			border-color: rgba(255, 255, 255, 0.15);
+		}
+		html.dark header:not(.bg-transparent) .paijo-theme-switch {
+			background-color: rgba(255, 255, 255, 0.2);
+		}
+		.paijo-theme-thumb {
+			display: inline-flex;
+			height: 24px;
+			width: 24px;
+			align-items: center;
+			justify-content: center;
+			border-radius: 9999px;
+			background-color: #ffffff;
+			transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+			transform: translateX(4px);
+			box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+		}
+		html.dark .paijo-theme-thumb {
+			transform: translateX(26px);
+		}
+		.paijo-theme-icon {
+			position: absolute;
+			width: 14px;
+			height: 14px;
+			transition: opacity 0.3s, transform 0.3s;
+		}
+		.paijo-theme-icon-sun {
+			color: #f59e0b;
+			opacity: 1;
+			transform: rotate(0deg);
+		}
+		html.dark .paijo-theme-icon-sun {
+			opacity: 0;
+			transform: rotate(-90deg);
+		}
+		.paijo-theme-icon-moon {
+			color: #6366f1;
+			opacity: 0;
+			transform: rotate(90deg);
+		}
+		html.dark .paijo-theme-icon-moon {
+			opacity: 1;
+			transform: rotate(0deg);
+		}
 	</style>
 </head>
 <body <?php body_class( 'min-h-screen' ); ?>>
