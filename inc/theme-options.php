@@ -138,8 +138,10 @@ function paijo_get_category_choices(): array {
 		)
 	);
 
-	foreach ( $terms as $term ) {
-		$choices[ (int) $term->term_id ] = $term->name;
+	if ( ! is_wp_error( $terms ) && is_array( $terms ) ) {
+		foreach ( $terms as $term ) {
+			$choices[ (int) $term->term_id ] = $term->name;
+		}
 	}
 
 	return $choices;

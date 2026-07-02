@@ -26,7 +26,7 @@ $hero_ids   = paijo_post_ids_from_query( $hero_query );
 							<img class="absolute inset-0 h-full w-full object-cover" src="<?php echo esc_url( $thumbnail ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>">
 							<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-black/20"></div>
 							<!-- Fade overlay at the bottom to blend with grid section -->
-							<div class="absolute inset-x-0 bottom-0 h-1/4 pointer-events-none z-10" style="background: linear-gradient(to bottom, transparent, var(--color-paijo-paper));"></div>
+							<div class="absolute inset-x-0 bottom-0 h-[40vh] pointer-events-none z-10 bg-paijo-paper" style="-webkit-mask-image: linear-gradient(to top, black 0%, transparent 100%); mask-image: linear-gradient(to top, black 0%, transparent 100%);"></div>
 						<?php else : ?>
 							<div class="absolute inset-0 bg-paijo-ink"></div>
 						<?php endif; ?>
